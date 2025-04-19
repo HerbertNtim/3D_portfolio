@@ -1,4 +1,4 @@
-name: Auto PR and Merge from Release
+name: Auto PR and Merge from Dev
 
 on:
   push:
