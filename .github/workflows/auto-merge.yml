@@ -30,6 +30,7 @@ jobs:
           pr_body: "Automated Pull Request"
 
       - name: Auto approve
+        id: auto-approve
         if: steps.open-pr.outputs.pr_number != ''
         uses: juliangruber/approve-pull-request-action@v2
         with:
@@ -38,6 +39,7 @@ jobs:
         continue-on-error: true
 
       - name: Check approval result
+        if: always()
         run: |
           if [ "${{ steps.open-pr.outputs.pr_number.outcome }}" == "success" ]; then
             echo "✅ PR approved successfully!"
