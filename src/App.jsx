@@ -6,6 +6,7 @@ const App = () => {
         <p>This is a work in progress</p>
         <p>Testing auto merge</p>
         <p>Testing auto merge</p>
+        <p>Testing auto merge</p>
       </div>
     </main>
   )
