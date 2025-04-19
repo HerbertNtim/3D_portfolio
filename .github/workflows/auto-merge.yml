@@ -1,0 +1,44 @@
+name: Auto PR and Merge from Release
+
+on:
+  push:
+    branches:
+      - 'dev/*'
+
+jobs:
+  create-merge-pr:
+    runs-on: ubuntu-latest
+    permissions:
+      pull-requests: write
+      contents: write
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Create Pull Request
+        id: open-pr
+        uses: repo-sync/pull-request@v2
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          destination_branch: main
+          pr_title: "[Automated] Merge ${{ github.ref_name }} into main"
+          pr_body: "Automated PR from GitHub Actions"
+          pr_assignee: "HerbertNtim"
+          pr_reviewer: "HerbertNtim"
+
+      - name: Auto Approve Pull Request
+        if: steps.open-pr.outputs.pr_number != ''
+        uses: hmarr/auto-approve-action@v3
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Enable Auto-Merge
+        if: steps.open-pr.outputs.pr_number != ''
+        uses: peter-evans/enable-pull-request-automerge@v2
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          pull-request-number: ${{ steps.open-pr.outputs.pr_number }}
+          merge-method: squash
