@@ -29,7 +29,6 @@ jobs:
           pr_title: "[Automated] Merge ${{ github.ref_name }} into ${{ github.event.repository.default_branch }}"
           pr_body: "Automated Pull Request"
           pr_reviewer: "HerbertNtim"
-          pr_assignee: "HerbertNtim"
 
       # https://github.com/marketplace/actions/enable-pull-request-automerge
       - name: enable automerge
