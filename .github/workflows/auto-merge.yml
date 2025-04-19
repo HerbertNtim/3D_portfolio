@@ -20,7 +20,7 @@ jobs:
           token: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
 
       # https://github.com/marketplace/actions/github-pull-request-action
-      - name: create pull request
+      - name: Create Pull Request
         id: open-pr
         uses: repo-sync/pull-request@v2
         with:
@@ -30,9 +30,9 @@ jobs:
           pr_body: "Automated Pull Request"
 
       # https://github.com/marketplace/actions/enable-pull-request-automerge
-      - name: enable automerge
+      - name: Enable Automerge
         if: steps.open-pr.outputs.pr_number != ''
-        uses: peter-evans/enable-pull-request-automerge@v2
+        uses: peter-evans/enable-pull-request-automerge@v3
         with:
           token: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
           pull-request-number: ${{ steps.open-pr.outputs.pr_number }}
