@@ -24,6 +24,8 @@ export default defineConfig([
       ...js.configs.recommended.rules,
       ...pluginReact.configs.recommended.rules,
       "react/react-in-jsx-scope": "off", // ✅ Fixes your error
+
+      "react/prop-types": "off"
     },
     settings: {
       react: {
