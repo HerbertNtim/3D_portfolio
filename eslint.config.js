@@ -24,7 +24,7 @@ export default defineConfig([
       ...js.configs.recommended.rules,
       ...pluginReact.configs.recommended.rules,
       "react/react-in-jsx-scope": "off", // ✅ Fixes your error
-
+      "react/no-unknown-property": "off",
       "react/prop-types": "off"
     },
     settings: {
