@@ -5,15 +5,17 @@ import HeroExperience from "../components/HeroModels/HeroExperience";
 
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
-
+import AnimatedCounter from "../components/AnimatedCounter";
 
 const Hero = () => {
   useGSAP(() => {
-    gsap.fromTo(".hero-text h1", 
+    gsap.fromTo(
+      ".hero-text h1",
       {
         y: 50,
-        opacity: 0, 
-      }, {
+        opacity: 0,
+      },
+      {
         y: 0,
         opacity: 1,
         duration: 1,
@@ -65,7 +67,7 @@ const Hero = () => {
             <Button
               className="md:w-80 md:h-16 w-60 h-12"
               text="See My Work"
-              id="projects"
+              id="button"
             />
           </div>
         </header>
@@ -77,6 +79,9 @@ const Hero = () => {
           </div>
         </figure>
       </div>
+
+      {/* ANIMATED COUNTER */}
+      <AnimatedCounter />
     </section>
   );
 };
