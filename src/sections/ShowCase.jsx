@@ -47,7 +47,7 @@ const ShowCase = () => {
   return (
     <div id="work" ref={sectionRef} className="app-showcase">
       <div className="w-full">
-        <div className="showcaselayout">
+        <div className="showcase-layout">
           <div ref={rydeRef} className="first-project-wrapper">
             <div className="image-wrapper">
               <img src="/images/project1.png" alt="Ryde App Interface" />
